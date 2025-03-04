@@ -1,6 +1,7 @@
 let processes = []; // Store processes in an array
 let runningProcess = null; // Currently running process
 let time = 0; // System time
+let processColors = ["#4CAF50", "#FF5733", "#3498DB", "#9B59B6", "#F39C12"]; // Process colors
 
 // Add a new process
 document.getElementById('inputForm').addEventListener('submit', function (e) {
@@ -61,7 +62,7 @@ function simulateScheduling() {
 
     let ganttTimeline = document.getElementById('ganttTimeline');
     ganttTimeline.innerHTML = ''; // Clear previous gantt chart
-    
+
     while (completedProcesses < processes.length) {
         // Filter processes that have arrived (i.e., their arrival time <= current time)
         let readyProcesses = processes.filter(p => p.arrivalTime <= time && p.remainingTime > 0);
@@ -78,13 +79,11 @@ function simulateScheduling() {
                 // Add gantt chart block for previous process
                 let ganttBlock = document.createElement('div');
                 ganttBlock.classList.add('gantt-block');
-                ganttBlock.style.left = `${runningProcess.startTime * 20}px`; // Scale time
-                ganttBlock.style.width = `${(time - runningProcess.startTime) * 20}px`;
+                ganttBlock.style.left = `${runningProcess.startTime * 50}px`; // Scale time
+                ganttBlock.style.width = `${(time - runningProcess.startTime) * 50}px`;
                 ganttBlock.innerText = runningProcess.id;
+                ganttBlock.style.backgroundColor = processColors[processes.indexOf(runningProcess) % processColors.length];
                 ganttTimeline.appendChild(ganttBlock);
-
-                // Reduce the remaining time of the running process
-                runningProcess.remainingTime -= (time - runningProcess.startTime);
             }
 
             // Set the current process as the running process
