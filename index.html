@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajatheking Hybrid Scheduling Algorithm</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rajatheking Hybrid Scheduling Algorithm</h1>
+        
+        <div class="form-container">
+            <form id="inputForm">
+                <div class="input-group">
+                    <label for="processId">Process ID:</label>
+                    <input type="text" id="processId" placeholder="Enter Process ID" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="arrivalTime">Arrival Time:</label>
+                    <input type="number" id="arrivalTime" placeholder="Enter Arrival Time" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="burstTime">Burst Time:</label>
+                    <input type="number" id="burstTime" placeholder="Enter Burst Time" required>
+                </div>
+                
+                <button type="submit" class="add-btn">Add Process</button>
+            </form>
+        </div>
+
+        <div class="process-table">
+            <h2>Processes</h2>
+            <table id="processTable">
+                <thead>
+                    <tr>
+                        <th>Process ID</th>
+                        <th>Arrival Time</th>
+                        <th>Burst Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="result-container">
+            <h2>Scheduling Result</h2>
+            <button class="simulate-btn" onclick="simulateScheduling()">Simulate Scheduling</button>
+            <div id="result"></div>
+        </div>
+
+        <div class="gantt-chart">
+            <h2>Gantt Chart</h2>
+            <div class="gantt-timeline" id="ganttTimeline"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
